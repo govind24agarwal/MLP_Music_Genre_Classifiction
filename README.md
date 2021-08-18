@@ -4,12 +4,18 @@
 
 ### Task1: Loading data and spliting it into train and test sets
 
-### Task2: Implementing MLP model for music genre classification
+### Task2: Implementing and compiling MLP model for music genre classification
 
 ### Task3: Training MLP model
 
 ### Task4: Reducing overfitting using Dropout and l2regularisation
 
-### Task5: Test Model
-
 #### For MFCCs dataset creation checkout my other repository: https://github.com/govind24agarwal/extracting_mfccs_music_genre
+
+### activation function used for hidden layers: relu
+
+### activation function used for output layer: softmax
+
+### optimiser used: Adam
+
+### loss function: sparse categorical crossentropy
