@@ -62,3 +62,10 @@ if __name__ == "__main__":
                   metrics=['accuracy'])
 
     model.summary()
+
+# train model
+model.fit(x_train,
+          y_train,
+          validation_data=(x_test, y_test),
+          batch_size=32,
+          epochs=30)
