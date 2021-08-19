@@ -8,7 +8,7 @@
 
 ### Task3: Training MLP model
 
-### Task4: Reducing overfitting using Dropout and l2regularisation
+### Task4: Reducing overfitting using Dropout and l2 regularisation
 
 #### For MFCCs dataset creation checkout my other repository: https://github.com/govind24agarwal/extracting_mfccs_music_genre
 

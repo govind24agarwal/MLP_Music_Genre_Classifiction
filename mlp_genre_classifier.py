@@ -2,7 +2,7 @@ import json
 import numpy as np
 from sklearn.model_selection import train_test_split
 import tensorflow.keras as keras
-
+import matplotlib.pyplot as plt
 
 # path to json file that stores MFCCs and genre labels for each processed segment
 DATA_PATH = "/home/govind/Documents/ML/Velario Youtube/extracting_mfccs_music_genre/data.json"
@@ -26,6 +26,32 @@ def load_data(data_path):
     y = np.array(data["labels"])
 
     return x, y
+
+
+def plot_history(history):
+    """Plots accuracy/loss for training/validation set as a function of the epochs
+
+    Args:
+        history (object): Training history of the model
+    """
+
+    fig, axs = plt.subplots(2)
+
+    # create accuracy subplot
+    axs[0].plot(history.history["accuracy"], label="train accuracy")
+    axs[0].plot(history.history["val_accuracy"], label="test accuracy")
+    axs[0].set_ylabel("Accuracy")
+    axs[0].legend(loc="lower right")
+    axs[0].set_title("Accuracy eval")
+
+    # create error subplot
+    axs[1].plot(history.history["loss"], label='train error')
+    axs[1].plot(history.history["val_loss"], label="test error")
+    axs[1].set_ylabel("Eroor")
+    axs[1].legend(loc="upper right")
+    axs[1].set_title("Error eval")
+
+    plt.show()
 
 
 if __name__ == "__main__":
@@ -64,8 +90,11 @@ if __name__ == "__main__":
     model.summary()
 
 # train model
-model.fit(x_train,
-          y_train,
-          validation_data=(x_test, y_test),
-          batch_size=32,
-          epochs=30)
+history = model.fit(x_train,
+                    y_train,
+                    validation_data=(x_test, y_test),
+                    batch_size=32,
+                    epochs=30)
+
+# plot accuracy and error as a function of the epochs
+plot_history(history)
