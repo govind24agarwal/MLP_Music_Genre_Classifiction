@@ -70,15 +70,18 @@ if __name__ == "__main__":
         keras.layers.Flatten(input_shape=(x.shape[1], x.shape[2])),
 
         # 1st hidden layer
-        keras.layers.Dense(512, activation="relu"),
+        keras.layers.Dense(512, activation="relu",
+                           kernel_regularizer=keras.regularizers.l2(0.001)),
         keras.layers.Dropout(0.05),
 
         # 2nd hidden layer
-        keras.layers.Dense(256, activation="relu"),
+        keras.layers.Dense(256, activation="relu",
+                           kernel_regularizer=keras.regularizers.l2(0.001)),
         keras.layers.Dropout(0.05),
 
         # 3rd hidden layer
-        keras.layers.Dense(64, activation="relu"),
+        keras.layers.Dense(64, activation="relu",
+                           kernel_regularizer=keras.regularizers.l2(0.001)),
         keras.layers.Dropout(0.05),
 
         # output layer
