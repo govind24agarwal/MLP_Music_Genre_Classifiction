@@ -3,6 +3,7 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 import tensorflow.keras as keras
 import matplotlib.pyplot as plt
+from tensorflow.python.keras.layers.core import Dropout
 
 # path to json file that stores MFCCs and genre labels for each processed segment
 DATA_PATH = "/home/govind/Documents/ML/Velario Youtube/extracting_mfccs_music_genre/data.json"
@@ -70,12 +71,15 @@ if __name__ == "__main__":
 
         # 1st hidden layer
         keras.layers.Dense(512, activation="relu"),
+        keras.layers.Dropout(0.05),
 
         # 2nd hidden layer
         keras.layers.Dense(256, activation="relu"),
+        keras.layers.Dropout(0.05),
 
         # 3rd hidden layer
         keras.layers.Dense(64, activation="relu"),
+        keras.layers.Dropout(0.05),
 
         # output layer
         keras.layers.Dense(10, activation="softmax")
@@ -94,7 +98,7 @@ history = model.fit(x_train,
                     y_train,
                     validation_data=(x_test, y_test),
                     batch_size=32,
-                    epochs=30)
+                    epochs=50)
 
 # plot accuracy and error as a function of the epochs
 plot_history(history)
